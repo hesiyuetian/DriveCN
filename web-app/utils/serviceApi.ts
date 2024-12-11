@@ -11,7 +11,7 @@ class service {
    * Login Api
    * @param params: object
    */
-  static login = params => {
+  static login = (params: any) => {
     let config = {
       url: `${meta.api}/oauth/phoneLogin`,
       params,
@@ -24,7 +24,7 @@ class service {
    * deleteAccount Api
    * @param params: object
    */
-  static deleteAccount = params => {
+  static deleteAccount = (params: any) => {
     let config = {
       url: `${meta.api}/account/deleteAccount`,
       params,
@@ -37,7 +37,7 @@ class service {
    * Register Api
    * @param params: object
    */
-  static register = data => {
+  static register = (data: any) => {
     let config = {
       url: `${meta.api}/account/registerNew`,
       data: qs.stringify(data),
@@ -60,7 +60,7 @@ class service {
     return api(config);
   };
 
-  static sendBindCode = params => {
+  static sendBindCode = (params: any) => {
     let config = {
       url: `${meta.api}/account/sendBindCode?${qs.stringify(params)}`,
       method: 'post',
@@ -73,7 +73,7 @@ class service {
    * @param data: object
    * @param callback: Promise<any>
    */
-  static registerDriver = data => {
+  static registerDriver = (data: any) => {
     let config = {
       url: `${meta.api}/account/registerDriver?${qs.stringify(data)}`,
       method: 'post',
@@ -85,7 +85,7 @@ class service {
    * orderList api
    * @param data: object
    */
-  static orderList = data => {
+  static orderList = (data: any) => {
     let config = {
       url: `${meta.api}/order/orderHomePage?${qs.stringify(data)}`,
       method: 'get',
@@ -97,7 +97,7 @@ class service {
    * Rush Order
    * @param params: object
    */
-  static rushOrder = params => {
+  static rushOrder = (params: any) => {
     let config = {
       url: `${meta.api}/executeOrder/rushOrder?${qs.stringify(params)}`,
       method: 'put',
@@ -121,7 +121,7 @@ class service {
    * 上报司机位置
    * @param params: object
    */
-  static uploadDriverTrack = data => {
+  static uploadDriverTrack = (data: any) => {
     let config = {
       // url: `${meta.api}/executeOrder/uploadDriverTrack?${qs.stringify(params)}`,
       url: `${meta.api}/executeOrder/uploadDriverTrack`,
@@ -135,7 +135,7 @@ class service {
    * 查询违约金
    * @param params: object
    */
-  static searchPenalty = params => {
+  static searchPenalty = (params: any) => {
     let config = {
       url: `${meta.api}/executeOrder/searchPenalty?${qs.stringify(params)}`,
       method: 'get',
@@ -147,7 +147,7 @@ class service {
    * Cancel Order
    * @param params: object
    */
-  static cancelOrder = params => {
+  static cancelOrder = (params: any) => {
     let config = {
       url: `${meta.api}/executeOrder/cancelOrder?${qs.stringify(params)}`,
       method: 'put',
@@ -159,7 +159,7 @@ class service {
    * checkRunning Order
    * @param params: object
    */
-  static checkRunningOrder = params => {
+  static checkRunningOrder = () => {
     let config = {
       url: `${meta.api}/order/checkRunningOrder`,
       method: 'get',
@@ -171,7 +171,7 @@ class service {
    * Go To Address
    * @param params: object
    */
-  static goToAddress = params => {
+  static goToAddress = (params: any) => {
     let config = {
       url: `${meta.api}/executeOrder/setOut?${qs.stringify(params)}`,
       method: 'put',
@@ -183,7 +183,7 @@ class service {
    * order list api
    * @param data: object
    */
-  static orderDetail = params => {
+  static orderDetail = (params: any) => {
     let config = {
       url: `${meta.api}/order/orderDetail`,
       params,
@@ -195,7 +195,7 @@ class service {
    * order drive list api
    * @param data: object
    */
-  static orderDriverDetail = params => {
+  static orderDriverDetail = (params: any) => {
     let config = {
       url: `${meta.api}/order/orderDriverDetail`,
       params,
@@ -208,7 +208,7 @@ class service {
    * Arrive Address
    * @param params: object
    */
-  static arriveAddress = params => {
+  static arriveAddress = (params: any) => {
     let config = {
       url: `${meta.api}/executeOrder/arrive?${qs.stringify(params)}`,
       method: 'put',
@@ -220,7 +220,7 @@ class service {
    * Order Start Service
    * @param params: object
    */
-  static startService = params => {
+  static startService = (params: any) => {
     let config = {
       url: `${meta.api}/executeOrder/startService?${qs.stringify(params)}`,
       method: 'put',
@@ -232,7 +232,7 @@ class service {
    * Order End Service
    * @param params: object
    */
-  static endService = params => {
+  static endService = (params: any) => {
     let config = {
       url: `${meta.api}/executeOrder/endService?${qs.stringify(params)}`,
       method: 'put',
@@ -244,7 +244,7 @@ class service {
    * Finish Order
    * @param params: object
    */
-  static finishOrder = data => {
+  static finishOrder = (data: any) => {
     let config = {
       url: `${meta.api}/executeOrder/finishOrder`,
       data: qs.stringify(data),
@@ -258,7 +258,7 @@ class service {
    * Calc Over Fee
    * @param params: object
    */
-  static calcOverFee = params => {
+  static calcOverFee = (params: any) => {
     let config = {
       url: `${meta.api}/extraFee/calcOverFee`,
       params,
@@ -271,7 +271,7 @@ class service {
    * Calc Time And Mileage
    * @param params: object
    */
-  static calcTimeAndMileage = params => {
+  static calcTimeAndMileage = (params: any) => {
     let config = {
       url: `${meta.api}/extraFee/calcRealTimeAndMileage`,
       params,
@@ -284,7 +284,7 @@ class service {
    * Updata Add Fee
    * @param params: object
    */
-  static addFeeSubmit = params => {
+  static addFeeSubmit = (params: any) => {
     let config = {
       url: `${meta.api}/extraFee/submit?${qs.stringify(params)}`,
       method: 'post',
@@ -296,7 +296,7 @@ class service {
    * Load Defalut Add Fee
    * @param params: object
    */
-  static loadAddFee = params => {
+  static loadAddFee = (params: any) => {
     let config = {
       url: `${meta.api}/extraFee/load`,
       params,
@@ -309,7 +309,7 @@ class service {
    * Upload Img
    * @param params: object
    */
-  static uploadImg = data => {
+  static uploadImg = (data: any) => {
     let config = {
       url: `${meta.api}/executeOrder/uploadImg?${qs.stringify(data)}`,
       method: 'put',
@@ -321,7 +321,7 @@ class service {
    * Order Img List
    * @param params: object
    */
-  static getOrderImgList = params => {
+  static getOrderImgList = (params: any) => {
     let config = {
       url: `${meta.api}/order/orderImgList`,
       params,
@@ -346,7 +346,7 @@ class service {
    * @param {*} data
    * @returns
    */
-  static uploadTrack = data => {
+  static uploadTrack = (data: any) => {
     let config = {
       url: `${meta.api}/executeOrder/uploadTrack`,
       data,
@@ -362,7 +362,7 @@ class service {
   ///
   ///
 
-  // static getCheckCode = params => {
+  // static getCheckCode = (params:any) => {
   //     let config = {
   //         url: `${meta.system}/getCheckCode`,
   //         params,
@@ -375,7 +375,7 @@ class service {
   //  * 获取企业用户开通的业务类型
   //  * @param data: object
   //  */
-  // static getBusinessType = params => {
+  // static getBusinessType = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/home/getEntOpenBusinessType`,
   //         method: 'get',
@@ -395,7 +395,7 @@ class service {
   //     return api(config);
   // };
 
-  // static addWxMsgUserCount = data => {
+  // static addWxMsgUserCount = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/oauth/addWxMsgUserCount`,
   //         method: 'post',
@@ -408,7 +408,7 @@ class service {
   //  * Get Phone Api
   //  * @param data: object
   //  */
-  // static getPhone = data => {
+  // static getPhone = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/oauth/phone`,
   //         method: 'post',
@@ -421,7 +421,7 @@ class service {
   //  * Set UserInfo Api
   //  * @param data: object
   //  */
-  // static setUserInfo = data => {
+  // static setUserInfo = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/oauth/userInfo`,
   //         method: 'post',
@@ -434,7 +434,7 @@ class service {
   //  * customCombineOrderList api
   //  * @param data: object
   //  */
-  // static customCombineOrderList = params => {
+  // static customCombineOrderList = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/customCombineOrder/orderList`,
   //         method: 'get',
@@ -447,7 +447,7 @@ class service {
   //  * Create Order Api
   //  * @param data: object
   //  */
-  // static createOrder = data => {
+  // static createOrder = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/order/add`,
   //         method: 'post',
@@ -460,7 +460,7 @@ class service {
   //  * Create CustomCombine Order Api
   //  * @param data: object
   //  */
-  // static createCustomCombineOrder = data => {
+  // static createCustomCombineOrder = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/customCombineOrder/add`,
   //         method: 'post',
@@ -473,7 +473,7 @@ class service {
   //  * Order Detail api
   //  * @param data: object
   //  */
-  // static orderDetail = params => {
+  // static orderDetail = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/order/orderDetail`,
   //         method: 'get',
@@ -486,7 +486,7 @@ class service {
   //  * Custom Order Detail api
   //  * @param data: object
   //  */
-  // static customOrderDetail = params => {
+  // static customOrderDetail = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/customCombineOrder/orderDetail`,
   //         method: 'get',
@@ -499,7 +499,7 @@ class service {
   //  * Cancel Order api
   //  * @param data: object
   //  */
-  // static cancelOrder = data => {
+  // static cancelOrder = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/order/cancelOrder?${qs.stringify(data)}`,
   //         method: 'put',
@@ -511,7 +511,7 @@ class service {
   //  * Custom Cancel Order api
   //  * @param data: object
   //  */
-  // static customCancelOrder = data => {
+  // static customCancelOrder = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/customCombineOrder/cancelOrder?${qs.stringify(data)}`,
   //         method: 'put',
@@ -523,7 +523,7 @@ class service {
   //  * Search Penalty api
   //  * @param data: object
   //  */
-  // static searchPenalty = data => {
+  // static searchPenalty = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/order/searchPenalty?${qs.stringify(data)}`,
   //         method: 'get',
@@ -535,7 +535,7 @@ class service {
   //  * Custom Search Penalty api
   //  * @param data: object
   //  */
-  // static customSearchPenalty = data => {
+  // static customSearchPenalty = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/customCombineOrder/searchPenalty?${qs.stringify(data)}`,
   //         method: 'put',
@@ -549,7 +549,7 @@ class service {
   //  * 企业绑定类 API
   //  */
 
-  // static sendEntBindCode = params => {
+  // static sendEntBindCode = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/account/sendEntBindCode`,
   //         method: 'get',
@@ -557,7 +557,7 @@ class service {
   //     };
   //     return api(config);
   // };
-  // static entBind = params => {
+  // static entBind = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/account/entBind`,
   //         method: 'get',
@@ -566,7 +566,7 @@ class service {
   //     return api(config);
   // };
 
-  // static getEntLchTrip = params => {
+  // static getEntLchTrip = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/account/getEntLchTrip`,
   //         method: 'get',
@@ -575,7 +575,7 @@ class service {
   //     return api(config);
   // };
 
-  // static getProductStandard = params => {
+  // static getProductStandard = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/account/getProductStandard`,
   //         method: 'get',
@@ -590,7 +590,7 @@ class service {
   //  * 审批类 API
   //  */
 
-  // static entOrderApproval = params => {
+  // static entOrderApproval = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/account/entOrderApproval`,
   //         method: 'get',
@@ -599,7 +599,7 @@ class service {
   //     return api(config);
   // };
 
-  // static queryFlowStepPageListMp = params => {
+  // static queryFlowStepPageListMp = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/flowStep/queryFlowStepPageListMp`,
   //         method: 'get',
@@ -608,7 +608,7 @@ class service {
   //     return api(config);
   // };
 
-  // static orderFlowListMp = params => {
+  // static orderFlowListMp = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/orderFlow/orderFlowListMp`,
   //         method: 'get',
@@ -617,7 +617,7 @@ class service {
   //     return api(config);
   // };
 
-  // static entCancelOrderApproval = params => {
+  // static entCancelOrderApproval = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/account/entCancelOrderApproval`,
   //         method: 'get',
@@ -626,7 +626,7 @@ class service {
   //     return api(config);
   // };
 
-  // static setOrderFlowOaNo = params => {
+  // static setOrderFlowOaNo = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/orderFlow/setOrderFlowOaNo`,
   //         method: 'get',
@@ -635,7 +635,7 @@ class service {
   //     return api(config);
   // };
 
-  // static checkTravelStandards = params => {
+  // static checkTravelStandards = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/orderFlow/checkTravelStandards`,
   //         method: 'get',
@@ -659,7 +659,7 @@ class service {
   //     return api(config);
   // };
 
-  // static updatePersonalInformation = data => {
+  // static updatePersonalInformation = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/account/updatePersonalInformation`,
   //         method: 'post',
@@ -668,7 +668,7 @@ class service {
   //     return api(config);
   // };
 
-  // static getInvoiceOrderInfo = params => {
+  // static getInvoiceOrderInfo = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/account/getInvoiceOrderInfo`,
   //         method: 'get',
@@ -677,7 +677,7 @@ class service {
   //     return api(config);
   // };
 
-  // static saveInvoiceOrder = data => {
+  // static saveInvoiceOrder = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/account/saveInvoiceOrder`,
   //         method: 'post',
@@ -686,7 +686,7 @@ class service {
   //     return api(config);
   // };
 
-  // static cacheDingTalkOaInfo = data => {
+  // static cacheDingTalkOaInfo = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/account/cacheDingTalkOaInfo`,
   //         method: 'post',
@@ -695,7 +695,7 @@ class service {
   //     return api(config);
   // };
 
-  // static getCouponInfo = params => {
+  // static getCouponInfo = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/account/getCouponInfo`,
   //         method: 'get',
@@ -718,7 +718,7 @@ class service {
   //     return api(config);
   // };
 
-  // static updateCommonAddress = data => {
+  // static updateCommonAddress = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/account/updateCommonAddress`,
   //         method: 'post',
@@ -732,7 +732,7 @@ class service {
   //  * 发票 API
   //  * 发票 API
   //  */
-  // static invoiceList = params => {
+  // static invoiceList = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/invoice/list`,
   //         method: 'get',
@@ -741,7 +741,7 @@ class service {
   //     return api(config);
   // };
 
-  // static invoiceAdd = data => {
+  // static invoiceAdd = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/invoice/add`,
   //         method: 'post',
@@ -750,7 +750,7 @@ class service {
   //     return api(config);
   // };
 
-  // static invoiceEdit = data => {
+  // static invoiceEdit = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/invoice/edit`,
   //         method: 'post',
@@ -759,7 +759,7 @@ class service {
   //     return api(config);
   // };
 
-  // static invoiceDelete = data => {
+  // static invoiceDelete = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/invoice/delete`,
   //         method: 'post',
@@ -779,7 +779,7 @@ class service {
   //  * estimatePrice api
   //  * @param data: object
   //  */
-  // static estimatePrice = data => {
+  // static estimatePrice = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/home/estimatePrice`,
   //         method: 'PUT',
@@ -793,7 +793,7 @@ class service {
   //  * estimatePrice api
   //  * @param data: object
   //  */
-  // static entEstimatePrice = data => {
+  // static entEstimatePrice = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/home/entEstimatePrice`,
   //         method: 'PUT',
@@ -806,7 +806,7 @@ class service {
   //  * Get Area City
   //  * @param data: object
   //  */
-  // static getAreaCity = params => {
+  // static getAreaCity = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/home/getAreaCity`,
   //         method: 'get',
@@ -831,7 +831,7 @@ class service {
   //  * Get City api
   //  * @param data: object
   //  */
-  // static listByBusinessType = params => {
+  // static listByBusinessType = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/home/city/listByBusinessType`,
   //         params,
@@ -844,7 +844,7 @@ class service {
   //  * customCombineEstimatePrice api
   //  * @param data: object
   //  */
-  // static customCombineEstimatePrice = data => {
+  // static customCombineEstimatePrice = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/home/customCombineEstimatePrice`,
   //         method: 'PUT',
@@ -870,7 +870,7 @@ class service {
   //  * getProductConfigRule api
   //  * @param data: object
   //  */
-  // static getProductConfigRule = params => {
+  // static getProductConfigRule = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/account/getProductConfigRule`,
   //         method: 'get',
@@ -884,7 +884,7 @@ class service {
   //  * getOrderPeriod api
   //  * @param data: object
   //  */
-  // static getOrderPeriod = params => {
+  // static getOrderPeriod = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/home/getOrderPeriod/${params.businessId}`,
   //         method: 'get',
@@ -897,7 +897,7 @@ class service {
   //  * getOrderPeriod api
   //  * @param data: object
   //  */
-  // static getEntOrderPeriod = params => {
+  // static getEntOrderPeriod = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/home/getEntOrderPeriod/${params.businessId}`,
   //         method: 'get',
@@ -910,7 +910,7 @@ class service {
   //  * getFlightInfo api
   //  * @param data: object
   //  */
-  // static getFlightInfo = params => {
+  // static getFlightInfo = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/home/getFlightInfo`,
   //         method: 'get',
@@ -924,7 +924,7 @@ class service {
   //  * 力程 API
   //  * 力程 API
   //  */
-  // static booking = params => {
+  // static booking = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/lchtrip/booking`,
   //         method: 'get',
@@ -933,7 +933,7 @@ class service {
   //     return api(config);
   // };
 
-  // static bookingHotel = params => {
+  // static bookingHotel = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/lchtrip/bookingHotel`,
   //         method: 'get',
@@ -942,7 +942,7 @@ class service {
   //     return api(config);
   // };
 
-  // static getOrderDetailH5 = params => {
+  // static getOrderDetailH5 = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/lchtrip/getOrderDetailH5`,
   //         method: 'get',
@@ -951,7 +951,7 @@ class service {
   //     return api(config);
   // };
 
-  // static getLchtripCity = params => {
+  // static getLchtripCity = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/lchtrip/getLchtripCity`,
   //         method: 'get',
@@ -965,7 +965,7 @@ class service {
   //  * 超标 API
   //  * 超标 API
   //  */
-  // static getReasonList = params => {
+  // static getReasonList = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/orderFlow/getOverStandardReasonCodeList`,
   //         method: 'get',
@@ -974,7 +974,7 @@ class service {
   //     return api(config);
   // };
 
-  // static submitReasonCode = data => {
+  // static submitReasonCode = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/orderFlow/submitOverStandardReasonCode`,
   //         method: 'post',
@@ -983,7 +983,7 @@ class service {
   //     return api(config);
   // };
 
-  // static getTravelStandardInfo = params => {
+  // static getTravelStandardInfo = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/orderFlow/getTravelStandardInfoTime`,
   //         method: 'get',
@@ -997,7 +997,7 @@ class service {
   //  * 订单支付相关 Api
   //  * 订单支付相关 Api
   //  */
-  // static pay = params => {
+  // static pay = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/payment/pay`,
   //         method: 'get',
@@ -1006,7 +1006,7 @@ class service {
   //     return api(config);
   // };
 
-  // static customOrderPay = params => {
+  // static customOrderPay = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/customCombinePayment/pay`,
   //         method: 'get',
@@ -1015,7 +1015,7 @@ class service {
   //     return api(config);
   // };
 
-  // static searchResult = params => {
+  // static searchResult = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/payment/searchResult`,
   //         method: 'get',
@@ -1024,7 +1024,7 @@ class service {
   //     return api(config);
   // };
 
-  // static searchCustomOrderResult = params => {
+  // static searchCustomOrderResult = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/customCombinePayment/searchResult`,
   //         method: 'get',
@@ -1033,7 +1033,7 @@ class service {
   //     return api(config);
   // };
 
-  // static updataReasons = data => {
+  // static updataReasons = (data:any) => {
   //     let config = {
   //         url: `${meta.api}/order/updateReasonsRefundInfo`,
   //         method: 'post',
@@ -1042,7 +1042,7 @@ class service {
   //     return api(config);
   // };
 
-  // static getReasons = params => {
+  // static getReasons = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/order/getReasonsRefundInfo`,
   //         method: 'get',
@@ -1054,7 +1054,7 @@ class service {
   // /**
   //  * 授权 API
   //  */
-  // static getToken = params => {
+  // static getToken = (params:any) => {
   //     let config = {
   //         url: `${meta.api}/oauth/getToken`,
   //         method: 'get',
@@ -1062,14 +1062,14 @@ class service {
   //     };
   //     return api(config);
   // };
-  // static getPhoneCode = params => {
-  //     let config = {
-  //         url: `${meta.api}/oauth/getUserTokenVerificationCode`,
-  //         method: 'get',
-  //         params,
-  //     };
-  //     return api(config);
-  // };
+  static getPhoneCode = (params: any) => {
+    let config = {
+      url: `${meta.api}/oauth/getUserTokenVerificationCode`,
+      method: 'get',
+      params,
+    };
+    return api(config);
+  };
 }
 
 export default service;
