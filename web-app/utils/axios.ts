@@ -1,7 +1,7 @@
 import axios from 'axios';
 const BASE_URL = 'https://api.qddbl.cn/wxapp';
 // const BASE_URL = 'https://api.qa.qddbl.net/ctrip-wxapp';
-import {toast, hideLoading} from './index';
+import {toast} from './index';
 import RootNavigation from './RootNavigation';
 
 import DeviceStorage from './localStorage';
@@ -28,12 +28,11 @@ axiosIns.interceptors.request.use(async (config: any) => {
   return config;
 });
 
-axiosIns.interceptors.response.use(async (response:any) => {
+axiosIns.interceptors.response.use(async (response: any) => {
   let data = response.data;
   let status = response.status;
   if (data && status === 200) {
     if (data.code === 510) {
-      hideLoading();
       const token = await DeviceStorage.get('token');
       token && toast(data?.message ?? '登录过期', 1500);
       RootNavigation.navigate('Login', {});
@@ -41,7 +40,6 @@ axiosIns.interceptors.response.use(async (response:any) => {
     }
     return Promise.resolve(data);
   } else {
-    hideLoading();
     toast('Network Error');
     return Promise.reject(data);
   }
@@ -63,7 +61,6 @@ ajaxMethod.forEach(method => {
         .catch((response: any) => {
           if (!response?.code) {
             //网络出错
-            hideLoading();
             // toast('网络异常,请稍后再试')
             reject(response);
           } else {

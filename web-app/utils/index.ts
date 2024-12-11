@@ -1,24 +1,15 @@
-import Toast from 'react-native-tiny-toast';
+import Toast from 'react-native-root-toast';
 import dayjs from 'dayjs';
 
 const toast = (title: any, time?: any) => {
   return new Promise(resolve => {
     Toast.show(title, {
-      mask: true,
-      position: 0,
+      shadow: true,
+      position: Toast.positions.TOP,
       duration: time ?? 3000,
       onHidden: () => resolve(true),
     });
   });
-};
-
-let showLoading = (title?: any) =>
-  Toast.showLoading(title ?? '拼命加载中...', {
-    mask: true,
-    maskColor: 'rgba(0,0,0,0)',
-  });
-const hideLoading = () => {
-  Toast.hide(showLoading);
 };
 
 const hideToast = () => {
@@ -71,4 +62,4 @@ const dateFormat = (time: any, status: any) => {
   }
 };
 
-export {toast, hideToast, showLoading, hideLoading, dateFormat};
+export {toast, hideToast, dateFormat};

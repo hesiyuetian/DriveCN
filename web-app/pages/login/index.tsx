@@ -8,7 +8,8 @@ import DeviceStorage from '../../utils/localStorage';
 import {toast, showLoading, hideLoading, hideToast} from '../../utils/index';
 import RootNavigation from '../../utils/RootNavigation';
 import {useImmer} from 'use-immer';
-import Toast from 'react-native-tiny-toast';
+import Toast from 'react-native-root-toast';
+import {useLoading} from '../../../state/base/hooks';
 
 const sha1 = require('js-sha1');
 
@@ -17,6 +18,7 @@ function Login(): React.JSX.Element {
   const [password, setPassword] = useState();
   const [time, setTime] = useImmer(90);
   const timer = useRef<any>(null);
+  const [, setLoading] = useLoading();
 
   const onChangeText = (type: any, text: any) => {
     if (type === 'phone') {
@@ -105,15 +107,8 @@ function Login(): React.JSX.Element {
   };
 
   useEffect(() => {
-    // Toast.show('This is a default toast');
-    // Toast.showLoading('拼命加载中...', {
-    //   mask: true,
-    //   maskColor: 'rgba(0,0,0,0)',
-    // });
-
-    // hideToast();
-    // console.log('hideToast', hideToast);
-    // hideLoading();
+    hideToast();
+    setLoading(false);
     DeviceStorage.clear();
     return () => {
       clearInterval(timer.current);

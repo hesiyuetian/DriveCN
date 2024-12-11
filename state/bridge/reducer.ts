@@ -52,7 +52,7 @@ const initialState = {
   },
 } as any;
 
-const BaseInfoSlice = createSlice({
+const BridgeSlice = createSlice({
   name: 'bridge',
   initialState,
   reducers: {
@@ -184,4 +184,4 @@ const BaseInfoSlice = createSlice({
     },
   },
 });
-export default BaseInfoSlice.reducer;
+export default BridgeSlice.reducer;

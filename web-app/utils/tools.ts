@@ -1,11 +1,14 @@
-import {Dimensions} from 'react-native';
+import {Dimensions, Platform} from 'react-native';
 
 const screenSize = {
   width: Dimensions.get('window').width,
-  height: Dimensions.get('window').height,
-  // height: Platform.OS === "ios"
-  // ? Dimensions.get("window").height
-  // : require("react-native-extra-dimensions-android").get("REAL_WINDOW_HEIGHT")
+  // height: Dimensions.get('window').height,
+  height:
+    Platform.OS === 'ios'
+      ? Dimensions.get('window').height
+      : require('react-native-extra-dimensions-android').get(
+          'REAL_WINDOW_HEIGHT',
+        ),
 };
 
 const flexCenterX = {

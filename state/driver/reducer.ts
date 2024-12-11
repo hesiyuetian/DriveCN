@@ -16,7 +16,7 @@ const initialState: any = {
   canchLocations: {}, // 临时缓存  每隔一段时间上传一个
 };
 
-const InfoSlice = createSlice({
+const DriverSlice = createSlice({
   name: 'driver',
   initialState,
   reducers: {
@@ -36,16 +36,16 @@ const InfoSlice = createSlice({
 
     startTask(state) {
       console.log('frist =======');
-    //   this.addListenerLocation();
-    //   this.loopDriver();
+      //   this.addListenerLocation();
+      //   this.loopDriver();
 
       BackgroundTimer.runBackgroundTimer(async () => {
         const _token = await DeviceStorage.get('token');
         console.log('BackgroundTimer ===', _token);
         if (_token) {
-        //   this.loopDriver();
+          //   this.loopDriver();
         } else {
-        //   this.stopTask();
+          //   this.stopTask();
           BackgroundTimer.stopBackgroundTimer();
           // removeListenerLocation
           state.canchLocations = {};
@@ -143,4 +143,4 @@ const InfoSlice = createSlice({
   },
 });
 
-export default InfoSlice.reducer;
+export default DriverSlice.reducer;

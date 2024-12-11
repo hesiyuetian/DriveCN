@@ -2,9 +2,11 @@ import {configureStore, ThunkAction, Action} from '@reduxjs/toolkit';
 import {useDispatch} from 'react-redux';
 import bridge from './bridge/reducer';
 import driver from './driver/reducer';
+import base from './base/reducer';
 
 const store = configureStore({
   reducer: {
+    base,
     driver,
     bridge,
   },
