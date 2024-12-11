@@ -5,7 +5,7 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import styles from './style';
 import service from '../../utils/serviceApi';
 import DeviceStorage from '../../utils/localStorage';
-import {toast, showLoading, hideLoading, hideToast} from '../../utils/index';
+import {toast, hideToast} from '../../utils/index';
 import RootNavigation from '../../utils/RootNavigation';
 import {useImmer} from 'use-immer';
 import Toast from 'react-native-root-toast';
@@ -18,7 +18,7 @@ function Login(): React.JSX.Element {
   const [password, setPassword] = useState();
   const [time, setTime] = useImmer(90);
   const timer = useRef<any>(null);
-  const [, setLoading] = useLoading();
+  const [, {showLoading, hideLoading}] = useLoading();
 
   const onChangeText = (type: any, text: any) => {
     if (type === 'phone') {
@@ -32,7 +32,14 @@ function Login(): React.JSX.Element {
     RootNavigation.navigate('Register');
   };
 
-  const getCode = () => {
+/*************  ✨ Codeium Command ⭐  *************/
+  /**
+   * get login code
+   * @function getCode
+   * @param {string} phone phone number
+   * @return {void}
+   */
+/******  e6ccd712-805c-4531-8bd6-25c6ad472a92  *******/  const getCode = () => {
     if (!phone) return toast('请输入正确的手机号');
     if (time < 90) return;
 
@@ -98,7 +105,7 @@ function Login(): React.JSX.Element {
         console.log('start My');
         await DeviceStorage.set('userInfo', data.result);
         console.log('My');
-        RootNavigation.TabarJumpTo('My');
+        RootNavigation.replace('My');
       } else {
         toast(data.message);
       }
@@ -108,7 +115,7 @@ function Login(): React.JSX.Element {
 
   useEffect(() => {
     hideToast();
-    setLoading(false);
+    hideLoading();
     DeviceStorage.clear();
     return () => {
       clearInterval(timer.current);

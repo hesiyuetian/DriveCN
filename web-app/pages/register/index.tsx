@@ -3,9 +3,10 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import styles from './style';
 import service from '../../utils/serviceApi';
 import DeviceStorage from '../../utils/localStorage';
-import {toast, hideToast, showLoading, hideLoading} from '../../utils';
+import {toast, hideToast} from '../../utils';
 import RootNavigation from '../../utils/RootNavigation';
-import { useImmer } from 'use-immer';
+import {useImmer} from 'use-immer';
+import {useLoading} from '../../../state/base/hooks';
 
 function Register(): React.JSX.Element {
   const [phone, setPhone] = React.useState('');
@@ -14,6 +15,7 @@ function Register(): React.JSX.Element {
   const [key, setKey] = React.useState('');
   const [time, setTime] = useImmer(90);
   const timer = useRef<any>();
+  const [, {showLoading, hideLoading}] = useLoading();
 
   const onChangeText = (type: any, text: any) => {
     let _value;
@@ -62,7 +64,8 @@ function Register(): React.JSX.Element {
     const success = async (data: any) => {
       hideLoading();
       if (data.code === 200) {
-        RootNavigation.navigate('Login');
+        // RootNavigation.navigate('Login');
+        RootNavigation.replace('Login');
       } else {
         hideLoading();
         toast(data.message);
@@ -73,8 +76,8 @@ function Register(): React.JSX.Element {
   };
 
   useEffect(() => {
-    // hideToast();
-    // hideLoading();
+    hideToast();
+    hideLoading();
     DeviceStorage.clear();
     return () => {
       clearInterval(timer.current);
