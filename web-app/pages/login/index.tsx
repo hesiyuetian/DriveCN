@@ -13,7 +13,7 @@ import {useLoading} from '../../../state/base/hooks';
 
 const sha1 = require('js-sha1');
 
-function Login(): React.JSX.Element {
+function Login({navigation}: any): React.JSX.Element {
   const [phone, setPhone] = useState();
   const [password, setPassword] = useState();
   const [time, setTime] = useImmer(90);
@@ -29,38 +29,40 @@ function Login(): React.JSX.Element {
   };
 
   const register = () => {
-    RootNavigation.navigate('Register');
+    // RootNavigation.navigate('Register');
+    navigation.navigate('Register');
   };
 
-/*************  ✨ Codeium Command ⭐  *************/
+  /*************  ✨ Codeium Command ⭐  *************/
   /**
    * get login code
    * @function getCode
    * @param {string} phone phone number
    * @return {void}
    */
-/******  e6ccd712-805c-4531-8bd6-25c6ad472a92  *******/  const getCode = () => {
-    if (!phone) return toast('请输入正确的手机号');
-    if (time < 90) return;
+  /******  e6ccd712-805c-4531-8bd6-25c6ad472a92  *******/ const getCode =
+    () => {
+      if (!phone) return toast('请输入正确的手机号');
+      if (time < 90) return;
 
-    showLoading();
+      showLoading();
 
-    const success = (data: any) => {
-      hideLoading();
-      if (data.code === 200) {
-        toast('短信发送成功');
-      } else {
-        clearInterval(timer.current);
-        setTime(90);
-        toast('服务器异常');
-      }
+      const success = (data: any) => {
+        hideLoading();
+        if (data.code === 200) {
+          toast('短信发送成功');
+        } else {
+          clearInterval(timer.current);
+          setTime(90);
+          toast('服务器异常');
+        }
+      };
+      service.getPhoneCode({phone}).then((res: any) => success(res));
+      clearInterval(timer.current);
+      timer.current = setInterval(() => {
+        dealTime();
+      }, 1000);
     };
-    service.getPhoneCode({phone}).then((res: any) => success(res));
-    clearInterval(timer.current);
-    timer.current = setInterval(() => {
-      dealTime();
-    }, 1000);
-  };
 
   const dealTime = () => {
     if (time <= 0) {
