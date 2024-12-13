@@ -1,14 +1,13 @@
-import React, {Component, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import styles from './style';
 import service from '../../utils/serviceApi';
 import DeviceStorage from '../../utils/localStorage';
 import {toast, hideToast} from '../../utils';
-import RootNavigation from '../../utils/RootNavigation';
 import {useImmer} from 'use-immer';
 import {useLoading} from '../../../state/base/hooks';
 
-function Register(): React.JSX.Element {
+function Register({navigation}: any): React.JSX.Element {
   const [phone, setPhone] = React.useState('');
   const [name, setName] = React.useState('');
   const [cityName, setCityName] = React.useState('');
@@ -65,7 +64,7 @@ function Register(): React.JSX.Element {
       hideLoading();
       if (data.code === 200) {
         // RootNavigation.navigate('Login');
-        RootNavigation.replace('Login');
+        navigation.replace('Login');
       } else {
         hideLoading();
         toast(data.message);

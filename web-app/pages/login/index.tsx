@@ -6,7 +6,6 @@ import styles from './style';
 import service from '../../utils/serviceApi';
 import DeviceStorage from '../../utils/localStorage';
 import {toast, hideToast} from '../../utils/index';
-import RootNavigation from '../../utils/RootNavigation';
 import {useImmer} from 'use-immer';
 import Toast from 'react-native-root-toast';
 import {useLoading} from '../../../state/base/hooks';
@@ -32,37 +31,29 @@ function Login({navigation}: any): React.JSX.Element {
     // RootNavigation.navigate('Register');
     navigation.navigate('Register');
   };
+  
+  const getCode = () => {
+    if (!phone) return toast('请输入正确的手机号');
+    if (time < 90) return;
 
-  /*************  ✨ Codeium Command ⭐  *************/
-  /**
-   * get login code
-   * @function getCode
-   * @param {string} phone phone number
-   * @return {void}
-   */
-  /******  e6ccd712-805c-4531-8bd6-25c6ad472a92  *******/ const getCode =
-    () => {
-      if (!phone) return toast('请输入正确的手机号');
-      if (time < 90) return;
+    showLoading();
 
-      showLoading();
-
-      const success = (data: any) => {
-        hideLoading();
-        if (data.code === 200) {
-          toast('短信发送成功');
-        } else {
-          clearInterval(timer.current);
-          setTime(90);
-          toast('服务器异常');
-        }
-      };
-      service.getPhoneCode({phone}).then((res: any) => success(res));
-      clearInterval(timer.current);
-      timer.current = setInterval(() => {
-        dealTime();
-      }, 1000);
+    const success = (data: any) => {
+      hideLoading();
+      if (data.code === 200) {
+        toast('短信发送成功');
+      } else {
+        clearInterval(timer.current);
+        setTime(90);
+        toast('服务器异常');
+      }
     };
+    service.getPhoneCode({phone}).then((res: any) => success(res));
+    clearInterval(timer.current);
+    timer.current = setInterval(() => {
+      dealTime();
+    }, 1000);
+  };
 
   const dealTime = () => {
     if (time <= 0) {
@@ -107,7 +98,7 @@ function Login({navigation}: any): React.JSX.Element {
         console.log('start My');
         await DeviceStorage.set('userInfo', data.result);
         console.log('My');
-        RootNavigation.replace('My');
+        navigation.replace('My');
       } else {
         toast(data.message);
       }
